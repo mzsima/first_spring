@@ -6,8 +6,8 @@
 https://start.spring.io/
 
 
-application.json
-``` json
+application.yaml
+``` yaml
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.7'
