@@ -32,6 +32,26 @@ dependencies {
 
 ## userの実装
 
+- 注意
+
+H2をDBに使っているので、userという文字が予約語らしくエラーになる。
+
+```cli
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user ..."; expected "identifier"; SQL statement:
+```
+
+コレを回避するために`application.yaml`にこんな感じで、設定を記述
+
+```application.yaml
+spring:
+  jpa:
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        globally_quoted_identifiers_skip_column_definitions: true
+```
+
+
 - entity の作成
 
 ```java 
