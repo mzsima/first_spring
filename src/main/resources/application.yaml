@@ -1,14 +1,33 @@
 spring:
+app:
   datasource:
-    url: jdbc:mysql://localhost:3306/db_example
-    username: root
-    password: my-secret
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    first:
+      url: jdbc:mysql://localhost:3306/db_example
+      username: root
+      password: my-secret
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      packages-to-scan: com.example.demo.first.entity
+    second:
+      url: jdbc:postgresql://localhost:5432/db_example
+      platform: postgres
+      username: my-user
+      password: my-secret
+      driver-class-name: org.postgresql.Driver
+      packages-to-scan: com.example.demo.second.entity
   jpa:
-    show-sql: true
-    hibernate: 
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-        format_sql: true
+    first:
+      properties:
+        hibernate:
+          show_sql: true
+          hbm2ddl:
+            auto: create-drop
+          dialect: org.hibernate.dialect.MySQL8Dialect
+          format_sql: true
+    second:
+      properties:
+        hibernate:
+          show_sql: true
+          hbm2ddl:
+            auto: create-drop
+          dialect: org.hibernate.dialect.PostgreSQL9Dialect
+          format_sql: true
