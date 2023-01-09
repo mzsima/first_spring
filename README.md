@@ -520,7 +520,6 @@ public class UserController {
     var user = repository.findById(id).get();
     repository.deleteById(user.getId());
     backup(user);
-    System.out.println("here --- ");
   }
 
   void backup(User user) {
