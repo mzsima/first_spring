@@ -1,5 +1,21 @@
 # 超入門 Userを登録して、検索する
 
+## 概要
+
+```mermaid
+    C4Context
+      Boundary(b0, "全体") {
+        Person(customerA, "あなた", "ユーザー登録/検索をするよ")
+        Boundary(b1, "application") {
+          System(SystemA, "My Spring App")
+          SystemDb(DbA, "H2")
+        }
+      }
+
+      Rel(customerA, SystemA, "Create/Search user")
+      BiRel(SystemA, DbA, "User")
+```
+
 ## setup
 
 - spring initializer からテンプレートを作成
